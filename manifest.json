@@ -1,0 +1,23 @@
+{
+	"name":"LoL Analysis",
+	"version":"0.5",
+	"description":"Seach information about champions and summoners(BR)",
+	"author": "SiNNiC",
+	"permissions": ["tabs","storage"],
+
+	"browser_action": {
+		"default_title": "LoL Analysis",
+		"default_popup": "index.html",
+		"default_icon": "icon.png"
+	},
+	
+	"options_page": "options.html",
+	
+	"icons" : {
+    "32" : "icon32.png",
+    "48" : "icon48.png",
+    "128" : "icon128.png"
+  },
+
+	"manifest_version":2
+}
