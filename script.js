@@ -47,7 +47,59 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 	botoesApagar(slots);
 	botoesFav(slots);
+
+/*parte das abas */
+	    // Capturando referências para os elementos das abas
+		const tab1b = document.getElementById('tab1b');
+		const tab2b = document.getElementById('tab2b');
+		
+		// Capturando referências para os elementos de conteúdo das abas
+		const tab1u = document.getElementById('tab1u');
+		const tab1d = document.getElementById('tab1d');
+		const tab2u = document.getElementById('tab2u');
+		const tab2d = document.getElementById('tab2d');
+	
+		// Adicionando event listeners para as abas
+		tab1b.addEventListener('click', function() {
+			// Exibindo o conteúdo da aba 1 e ocultando os demais
+			tab1u.style.display = 'block';
+			tab2u.style.display = 'none';
+			tab1d.style.display = 'block';
+			tab2d.style.display = 'none';
+			tab1b.classList.add('active-tab');
+			tab2b.classList.remove('active-tab');
+		});
+	
+		tab2b.addEventListener('click', function() {
+			// Exibindo o conteúdo da aba 2 e ocultando os demais
+			tab1u.style.display = 'none';
+			tab2u.style.display = 'block';
+			tab1d.style.display = 'none';
+			tab2d.style.display = 'block';
+			tab1b.classList.remove('active-tab');
+			tab2b.classList.add('active-tab');
+		});
+
 });
+
+function openTab(tabId) {
+	// Hide all tab contents
+	var tabContents = document.getElementsByClassName('tab-content');
+	for (var i = 0; i < tabContents.length; i++) {
+		tabContents[i].style.display = 'none';
+	}
+
+	// Remove 'active-tab' class from all tabs
+	var tabs = document.getElementsByClassName('tab');
+	for (var i = 0; i < tabs.length; i++) {
+		tabs[i].classList.remove('active-tab');
+	}
+
+	// Show the selected tab content and mark it as active
+	document.getElementById(tabId).style.display = 'block';
+	document.querySelector('[onclick="openTab(\'' + tabId + '\')"]').classList.add('active-tab');
+}
+
 
 // Get the input field
 var input = document.getElementById("texto");
@@ -59,7 +111,11 @@ input.addEventListener("keyup", function(event) {
     // Cancel the default action, if needed
     event.preventDefault();
     // Trigger the button element with a click
-    document.getElementById("btnSmnr").click();
+	if (tab1b.classList.contains('active-tab')) {
+		document.getElementById("btnSmnr").click();
+	} else {
+		document.getElementById("btnChamp").click();
+	}
   }
 });
 
@@ -97,12 +153,13 @@ function openBuilds (palavra){ //open champion's builds sites
 	}
 }
 
-function openPlayer(palavra){ //open player's profile sites
+function openPlayer(aux){ //open player's profile sites
 
+	var palavra = aux.toLowerCase();
 	//open summoner (player) information sites
 	let site1 = 'https://br.op.gg/summoner/userName=';
 	let site2 = 'https://www.leagueofgraphs.com/pt/summoner/br/';
-	let site3 = 'https://xdx.gg/br/';
+	let site3 = 'https://xdx.gg/';
 	let site4 = 'https://u.gg/lol/profile/br1/';
 
 	var linkArray = []; //all links
@@ -139,20 +196,19 @@ function salvarFavorito(words,EhChamp, numero){ //salvar os dois array no chrome
 		favo: words,
 		tipo: EhChamp,
 		slots: numero
-		}, function(){ //função de debbug
-		/*let frase = "lista de favoritos atualizada: ";
+		}, /*function(){ //função de debbug
+		let frase = "lista de favoritos atualizada: ";
 		for(i=0;i<numero;i++){
 			frase = frase + words[i]+", ";
 		}
-		alert(frase);*/
-		}
+		alert(frase);
+		}*/
 	)
 	
 	botoesApagar(numero); //Listening do novo botão de apagar
 	botoesFav(numero); //Listening do novo botão de favorito
 	window.location.reload();
 }
-
 
 document.querySelector('#btnChamp').addEventListener('click',function(){ //Clicar no botao Builds
 

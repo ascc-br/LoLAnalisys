@@ -34,6 +34,30 @@
 #btnOpt {
     float: right;
 }
+/*PARTE DOS TABS*/
+
+.tab-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab {
+    background-color: rgba(0,100,0,0.2);
+    padding: 5px 10px;
+    cursor: pointer;
+    color: rgba(59, 255, 20, 0.3);
+}
+
+.active-tab {
+    background-color: rgba(0,128,0,0.7); /* Cor de fundo da aba ativa */
+    color: black;
+}
+
+.active-content {
+    display: block;
+}
+
 
 /* OPTIONS.HTML */
 

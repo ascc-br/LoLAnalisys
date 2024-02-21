@@ -8,16 +8,36 @@
 </head>
 
 <body class="bg-index" >
-    <h3 class="centered">Insert Summoner's or Champion's name:</h3>
+    <h1>
+    <div class="tab-container">
+        <div id="tab1b" class="tab active-tab">Player</div>
+        <div id="tab2b" class="tab">Build</div>
+    </div>
+    </h1>
+
+    <div id="tab1u"> <h3 class="centered">Insert Summoner's name:</h3></div>
+
+    <div id="tab2u" class="hidden"> <h3 class="centered">Insert Champion's name:</h3></div>
     
-    <input id="texto" type "text">
+        <input id="texto" type "text">
     
-    <p>
-        <button id="btnSmnr">Player</button>
-        <button id="btnChamp">Builds</button>
-        <input type="checkbox" id="favoritar"><img src="star.png" />
-        <button id="btnOpt"><img src="options.png" /></button>
-    </p>
+    <div id="tab1d">
+        <p>
+            <button id="btnSmnr">Search player</button>
+            <input type="checkbox" id="favoritar"><img src="star.png" />
+            <button id="btnOpt"><img src="options.png" /></button>
+        </p>
+    
+    </div>
+
+    <div id="tab2d" class="hidden">         
+        <p>
+            <button id="btnChamp">Browse builds</button>
+            <input type="checkbox" id="favoritar"><img src="star.png" />
+            <button id="btnOpt"><img src="options.png" /></button>
+        </p>
+    
+    </div>
 
     <div id="fav1" class="hidden">
         <button id="fav1b"></button><button id="del1"><img src="trashcan.png" /></button><br><br></div>
@@ -40,6 +60,7 @@
     <div id="fav10" class="hidden">
         <button id="fav10b"></button><button id="del10"><img src="trashcan.png" /></button><br><br></div>
 
+    
 </body>
 
 </html>
