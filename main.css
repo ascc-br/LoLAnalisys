@@ -23,14 +23,6 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
-.container {
-    width: 160px; /* Fazendo com que o contêiner ocupe toda a largura da janela */
-    height: 100%; /* Fazendo com que o contêiner ocupe toda a altura da janela */
-    display: flex; /* Usando flexbox para alinhar o conteúdo verticalmente e horizontalmente */
-    justify-content: left; /* Centralizando horizontalmente */
-    align-items: center; /* Centralizando verticalmente */
-}
-
 #texto {
     background: rgba(255, 255, 255, 0.3);
     width: 100%; /* Definindo a largura da caixa de texto como 90% do contêiner */
