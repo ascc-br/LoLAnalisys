@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	var smr1, smr2, smr3, smr4, champ1, champ2, champ3, champ4, slots, favo = ["","",""], tipo = ["","",""];
 	
 	/*ToDo list:
+	-Tag input (summoner's name)
 	-reorder favs
 	-Change region
 	*/
@@ -61,23 +62,27 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 		// Adicionando event listeners para as abas
 		tab1b.addEventListener('click', function() {
-			// Exibindo o conteúdo da aba 1 e ocultando os demais
+			// Exibindo o conteúdo da aba 1 (player) e ocultando os demais
 			tab1u.style.display = 'block';
 			tab2u.style.display = 'none';
 			tab1d.style.display = 'block';
 			tab2d.style.display = 'none';
 			tab1b.classList.add('active-tab');
 			tab2b.classList.remove('active-tab');
+			document.getElementById('hashTexto').classList.toggle('hidden');
+			document.getElementById('texto').style.width = '45%';
 		});
 	
 		tab2b.addEventListener('click', function() {
-			// Exibindo o conteúdo da aba 2 e ocultando os demais
+			// Exibindo o conteúdo da aba 2 (builds) e ocultando os demais
 			tab1u.style.display = 'none';
 			tab2u.style.display = 'block';
 			tab1d.style.display = 'none';
 			tab2d.style.display = 'block';
 			tab1b.classList.remove('active-tab');
 			tab2b.classList.add('active-tab');
+			document.getElementById('hashTexto').classList.toggle('hidden');
+			document.getElementById('texto').style.width = '75%';
 		});
 
 });
@@ -213,48 +218,60 @@ function salvarFavorito(words,EhChamp, numero){ //salvar os dois array no chrome
 document.querySelector('#btnChamp').addEventListener('click',function(){ //Clicar no botao Builds
 
 	let aux1 = document.querySelector('#texto').value;
-	if (aux1 != "" && aux1[0] != ' ' && aux1.length < 17){
+	if (aux1 != "" && aux1[0] != ' ' && aux1.length < 17 ) {
 
-	let aux2 = aux1.split('').filter(e => e.trim().length).join('');// tira espaços
-	let vocabulo = aux2.toLowerCase(); //transforma tudo em lowercase
+		let aux2 = aux1.split('').filter(e => e.trim().length).join('');// tira espaços
+		let vocabulo = aux2.toLowerCase(); //transforma tudo em lowercase
 
-	openBuilds(vocabulo); //chama função que abre os links
+		openBuilds(vocabulo); //chama função que abre os links
 
-	if (document.getElementById('favoritar').checked === true ){
-	if (slots < 10){
+		if (document.getElementById('favoritar').checked === true ){
+			if (slots < 10){
 
-		//alert("tentou favoritar champion: " + vocabulo);
-		favo[slots] = vocabulo;
-		tipo[slots] = 1;
-		slots++;
+				//alert("tentou favoritar champion: " + vocabulo);
+				favo[slots] = vocabulo;
+				tipo[slots] = 1;
+				slots++;
 
-		salvarFavorito(favo,tipo, slots); //chamar funcao q salva
-	}else {
-		alert("Você já possui o maximo de "+slots+" favoritos!");
-	}
-	}
-}else alert("Entrada inválida!")})
+				salvarFavorito(favo,tipo, slots); //chamar funcao q salva
+			}else {
+				alert("Você já possui o maximo de "+slots+" favoritos!");
+			}
+		}
+	}else alert("Entrada inválida!")
+})
 
 document.querySelector('#btnSmnr').addEventListener('click',function(){ //Clicar no botao Player
 	let palavra = document.querySelector("#texto").value;
-	if (palavra != "" && palavra[0] != ' ' && palavra.length < 17){
+	let auxtag = document.querySelector('#hashTexto').value;
 
-	openPlayer(palavra); //chama a função q abre os links
+	if (palavra != "" && palavra[0] != ' ' && palavra.length < 17
+		&& auxtag[0] != ' ' && auxtag.length < 6) {
 
-	if (document.getElementById('favoritar').checked === true){
-		if (slots < 10){
+		if (auxtag == "") {
+			alert("Tag em branco, a pesquisa pode ser comprometida!");
+		}else {
+			palavra = palavra.concat("-");
+			palavra = palavra.concat(auxtag);
+		}
+		
+		openPlayer(palavra); //chama a função q abre os links
 
-		//alert("tentou favoritar jogador "+palavra+" depois do "+ slots+"º slot");
-		favo[slots] = palavra;
-		tipo[slots] = 2;
-		slots++;
+		if (document.getElementById('favoritar').checked === true){
+			if (slots < 10){
 
-		salvarFavorito(favo,tipo, slots);
-	}else {
-		alert("Você já possui o maximo de "+slots+" favoritos!");
-	}
-	}
-}else alert("Entrada inválida!")})
+				//alert("tentou favoritar jogador "+palavra+" depois do "+ slots+"º slot");
+				favo[slots] = palavra;
+				tipo[slots] = 2;
+				slots++;
+
+				salvarFavorito(favo,tipo, slots);
+			}else {
+				alert("Você já possui o maximo de "+slots+" favoritos!");
+			}
+		}
+	}else alert("Entrada inválida!")
+})
 
 document.querySelector('#btnOpt').addEventListener('click', function() { //clicar botao opt
   if (chrome.runtime.openOptionsPage) {

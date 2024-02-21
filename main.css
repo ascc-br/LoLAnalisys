@@ -23,16 +23,38 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
+.SrchBtn {
+    float: right;
+}
+
 #texto {
     background: rgba(255, 255, 255, 0.3);
-    width: 100%; /* Definindo a largura da caixa de texto como 90% do contêiner */
+    width: 75%; /* !!!!!ATENÇÃO!!!! valor alterado no script*/
+    height: 90%; /* Definindo a altura da caixa de texto como 90% do contêiner */
+    padding: 0px; /* Adicionando um preenchimento interno para espaçamento */
+    box-sizing: border-box; /* Fazendo com que o preenchimento não afete o tamanho total da caixa de texto */
+}
+#hashTexto {
+    background: rgba(255, 255, 255, 0.3);
+    width: 28%;  /* !!!!!ATENÇÃO!!!! valor alterado no script*/
     height: 90%; /* Definindo a altura da caixa de texto como 90% do contêiner */
     padding: 0px; /* Adicionando um preenchimento interno para espaçamento */
     box-sizing: border-box; /* Fazendo com que o preenchimento não afete o tamanho total da caixa de texto */
 }
 
 #btnOpt {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#favDiv {
     float: right;
+    width: 25%;
+}
+
+.favBtns {
+    margin-bottom: 5px;
 }
 /*PARTE DOS TABS*/
 
