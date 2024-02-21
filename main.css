@@ -9,6 +9,9 @@
 .bg-index {
     background-image: url('bg_index.png');
     background-repeat: repeat;
+    width: 180px; /* Definindo a largura do corpo como 300 pixels */
+    margin: 0 auto; /* Centralizando horizontalmente */
+    padding: 10px; /* Adicionando um espaço de preenchimento para melhorar a aparência */
 }
 
 .hidden {
@@ -20,8 +23,20 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
+.container {
+    width: 160px; /* Fazendo com que o contêiner ocupe toda a largura da janela */
+    height: 100%; /* Fazendo com que o contêiner ocupe toda a altura da janela */
+    display: flex; /* Usando flexbox para alinhar o conteúdo verticalmente e horizontalmente */
+    justify-content: left; /* Centralizando horizontalmente */
+    align-items: center; /* Centralizando verticalmente */
+}
+
 #texto {
     background: rgba(255, 255, 255, 0.3);
+    width: 100%; /* Definindo a largura da caixa de texto como 90% do contêiner */
+    height: 90%; /* Definindo a altura da caixa de texto como 90% do contêiner */
+    padding: 0px; /* Adicionando um preenchimento interno para espaçamento */
+    box-sizing: border-box; /* Fazendo com que o preenchimento não afete o tamanho total da caixa de texto */
 }
 
 #btnOpt {
